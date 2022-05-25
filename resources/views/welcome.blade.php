@@ -38,7 +38,7 @@
             @endif
 
             <h1 class="text-4xl font-bold dark:text-white">
-                e-Tickets BD
+                e-Ticket Bd
             </h1>
         </div>
     </body>

@@ -9,7 +9,7 @@
                     <div class="rounded-md shadow-sm -space-y-px">
                         <div>
                             <label for="name" class="">Name</label>
-                            <input type="text" id="name" name="name" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your name...">
+                            <input type="text" id="name" name="name" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your name...">
 
                             @error('name')
                                 <div class="font-medium text-red-600">
@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             <label for="email" class="">Email</label>
-                            <input type="email" id="email" name="email" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your email id...">
+                            <input type="email" id="email" name="email" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your email id...">
 
                             @error('email')
                                 <div class="font-medium text-red-600">
@@ -31,7 +31,7 @@
                         </div>
                         <div>
                             <label for="password" class="">Password</label>
-                            <input type="password" id="password" name="password" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your password...">
+                            <input type="password" id="password" name="password" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password...">
 
                             @error('password')
                                 <div class="font-medium text-red-600">
@@ -43,7 +43,7 @@
 
                         <div>
                             <label for="password_confirmation" class="">Confirm Password</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your password...">
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password again...">
 
                             @error('password_confirmation')
                                 <div class="font-medium text-red-600">
@@ -55,16 +55,16 @@
                     </div>
 
                     <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input id="remember-me" name="remember-me" type="checkbox"
-                                   class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded">
-                            <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                                Accept Terms
-                            </label>
-                        </div>
+{{--                        <div class="flex items-center">--}}
+{{--                            <input id="remember-me" name="remember-me" type="checkbox"--}}
+{{--                                   class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">--}}
+{{--                            <label for="remember-me" class="ml-2 block text-sm text-gray-900">--}}
+{{--                                Accept Terms--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
 
                         <div class="text-sm">
-                            <a href="{{ route('login') }}" class="font-medium text-yellow-600 hover:text-yellow-500">
+                            <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
                                 Already registered?
                             </a>
                         </div>
@@ -72,10 +72,10 @@
 
                     <div>
                         <button type="submit"
-                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                             <!-- Heroicon name: solid/lock-closed -->
-                            <svg class="h-5 w-5 text-yellow-500 group-hover:text-yellow-400"
+                            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                  aria-hidden="true">
                                 <path fill-rule="evenodd"

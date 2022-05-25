@@ -25,7 +25,7 @@
             @endauth
         </ul>
     </nav>
-    <div class="container mx-auto bg-indigo-100 rounded-lg w-1/2 mt-5 p-10">
+    <div class="container mx-auto bg-indigo-100 rounded-lg w-4/5 mt-5 p-10">
         Home
     </div>
 </body>
