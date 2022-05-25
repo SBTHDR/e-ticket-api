@@ -18,10 +18,14 @@ return new class extends Migration
             $table->foreignId('train_id');
             $table->foreignId('station_id');
             $table->dateTime('time');
-            $table->float('ac_b_price');
-            $table->float('ac_s_price');
-            $table->float('snigdha_price');
-            $table->float('f_berth_price');
+            $table->float('ac_a_price')->nullable();
+            $table->float('ac_b_price')->nullable();
+            $table->float('ac_c_price')->nullable();
+            $table->float('ac_d_price')->nullable();
+            $table->float('nac_a_price')->nullable();
+            $table->float('nac_b_price')->nullable();
+            $table->float('nac_c_price')->nullable();
+            $table->float('nac_d_price')->nullable();
             $table->timestamps();
         });
     }

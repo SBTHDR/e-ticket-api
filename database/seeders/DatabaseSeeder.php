@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bogi;
+use App\Models\Seat;
 use App\Models\Station;
 use App\Models\Train;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -32,6 +34,20 @@ class DatabaseSeeder extends Seeder
             $train['date'] = date('Y-m-d', strtotime($eTicketTrain['date']));
             $train['start_time'] = date('h:i:s', strtotime($eTicketTrain['start_time']));
             $train->save();
+
+            foreach (eTicketBogies() as $eTicketBogi) {
+                $bogi = new Bogi();
+                $bogi['train_id'] = $train['id'];
+                $bogi['name'] = $eTicketBogi;
+                $bogi->save();
+
+                for ($i = 0; $i <= 25; $i++) {
+                    $seat = new Seat();
+                    $seat['bogi_id'] = $bogi['id'];
+                    $seat['name'] = $bogi['name'] . '-' . $i;
+                    $seat->save();
+                }
+            }
         }
     }
 }

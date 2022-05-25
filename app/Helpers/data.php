@@ -41,3 +41,8 @@ function eTicketTrains() : array
         ],
     ];
 }
+
+function eTicketBogies() : array
+{
+    return ['DEX-P', 'DEX-NP'];
+}
