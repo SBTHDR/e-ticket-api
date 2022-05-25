@@ -4,9 +4,20 @@
     <section class="login pt-36">
         <div class="min-h-full flex items-center justify-center">
             <div class="max-w-md w-full space-y-8 bg-white p-5 rounded-md shadow-md">
-                <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
+                <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="rounded-md shadow-sm -space-y-px">
+                        <div>
+                            <label for="name" class="">Name</label>
+                            <input type="text" id="name" name="name" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your name...">
+
+                            @error('name')
+                                <div class="font-medium text-red-600">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
                         <div>
                             <label for="email" class="">Email</label>
                             <input type="email" id="email" name="email" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your email id...">
@@ -21,21 +32,40 @@
                         <div>
                             <label for="password" class="">Password</label>
                             <input type="password" id="password" name="password" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your password...">
+
+                            @error('password')
+                                <div class="font-medium text-red-600">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+
+                        <div>
+                            <label for="password_confirmation" class="">Confirm Password</label>
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="border rounded border-gray-400 p-2 w-full mb-2 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" placeholder="Enter your password...">
+
+                            @error('password_confirmation')
+                                <div class="font-medium text-red-600">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
                         </div>
                     </div>
 
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input id="remember_me" name="remember" type="checkbox"
+                            <input id="remember-me" name="remember-me" type="checkbox"
                                    class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded">
-                            <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-                                Remember me
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+                                Accept Terms
                             </label>
                         </div>
 
                         <div class="text-sm">
-                            <a href="{{ route('register') }}" class="font-medium text-yellow-600 hover:text-yellow-500">
-                                Don't have a account?
+                            <a href="{{ route('login') }}" class="font-medium text-yellow-600 hover:text-yellow-500">
+                                Already registered?
                             </a>
                         </div>
                     </div>
@@ -53,16 +83,15 @@
                                       clip-rule="evenodd" />
                             </svg>
                         </span>
-                            Sign in
+                            Register
                         </button>
                     </div>
                 </form>
                 <p class="text-center text-gray-500 text-xs">
-                    &copy; 2022 e-ticket BD. All rights reserved.
+                    &copy; 2022 e-Ticket BD. All rights reserved.
                 </p>
             </div>
         </div>
 
     </section>
-
 @endsection
