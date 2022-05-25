@@ -9,7 +9,24 @@
     <title>e-Ticket</title>
 </head>
 <body>
-    home
-    @yield('content')
+    <nav class="bg-indigo-500 p-5 flex justify-between items-center">
+        <div>
+            <h1 class="text-white text-2xl">e-Ticket</h1>
+        </div>
+        <ul class="flex space-x-2 text-white items-center">
+            @auth
+                <li>{{ auth()->user()->name }}</li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="text-indigo-700">
+                        Logout
+                    </button>
+                </form>
+            @endauth
+        </ul>
+    </nav>
+    <div class="container mx-auto bg-indigo-100 rounded-lg w-1/2 mt-5 p-10">
+        Home
+    </div>
 </body>
 </html>
