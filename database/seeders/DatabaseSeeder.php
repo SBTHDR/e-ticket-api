@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         foreach (eTicketTrains() as $eTicketTrain) {
             $train = new Train();
-            $train['home_station_id'] = $eTicketTrain['home_station_id'];
+            $train['station_id'] = $eTicketTrain['station_id'];
             $train['name'] = $eTicketTrain['name'];
             $train['date'] = date('Y-m-d', strtotime($eTicketTrain['date']));
             $train['start_time'] = date('h:i:s', strtotime($eTicketTrain['start_time']));
@@ -50,5 +50,13 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+        $schedule = new Schedule();
+        $schedule['train_id'] = 1;
+        $schedule['station_id'] = 2;
+        $schedule['time'] = '10:00';
+        $schedule['ac_a_price'] = 350;
+        $schedule['nac_a_price'] = 150;
+        $schedule->save();
     }
 }

@@ -28,13 +28,13 @@ function eTicketTrains() : array
 {
     return [
         [
-            'home_station_id' => 1,
+            'station_id' => 1,
             'name' => 'Dhaka Express',
             'date' => '2022-05-25',
             'start_time' => '07:00',
         ],
         [
-            'home_station_id' => 2,
+            'station_id' => 2,
             'name' => 'Chittagong Express',
             'date' => '2022-05-25',
             'start_time' => '09:00',

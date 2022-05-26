@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('home_station_id');
+            $table->foreignId('station_id')->constrained();
             $table->string('name');
             $table->date('date');
             $table->time('start_time');
