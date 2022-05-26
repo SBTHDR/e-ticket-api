@@ -10,14 +10,14 @@ function eTicketStations() : array
             'longitude' => '63.5636063',
         ],
         [
-            'name' => 'Dhaka B',
-            'address' => '7/14, Dhaka',
+            'name' => 'Chittagong B',
+            'address' => '7/14, Chittagong',
             'latitude' => '22.7738415',
             'longitude' => '70.3636013',
         ],
         [
-            'name' => 'Dhaka C',
-            'address' => '5/10, Dhaka',
+            'name' => 'khulna C',
+            'address' => '5/10, Khulna',
             'latitude' => '28.2735455',
             'longitude' => '83.9666017',
         ],
