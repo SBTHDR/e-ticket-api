@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Bogi;
+use App\Models\Schedule;
 use App\Models\Seat;
 use App\Models\Station;
 use App\Models\Train;
