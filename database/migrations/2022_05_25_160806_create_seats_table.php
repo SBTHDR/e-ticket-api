@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('train_id');
             $table->foreignId('bogi_id')->constrained();
             $table->unsignedBigInteger('type')->default(0)->comment('0 = ac');
+            $table->unsignedBigInteger('status')->default(0)->comment('0 = available, 1 = booked');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('train_id')->references('id')->on('trains');
         });
     }
 

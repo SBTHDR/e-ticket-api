@@ -45,6 +45,8 @@ class DatabaseSeeder extends Seeder
                 for ($i = 0; $i <= 25; $i++) {
                     $seat = new Seat();
                     $seat['bogi_id'] = $bogi['id'];
+                    $seat['train_id'] = $train['id'];
+                    $seat['type'] = rand(0, 1);
                     $seat['name'] = $bogi['name'] . '-' . $i;
                     $seat->save();
                 }
