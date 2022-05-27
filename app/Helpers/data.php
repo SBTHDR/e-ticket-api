@@ -46,3 +46,11 @@ function eTicketBogies() : array
 {
     return ['DEX-P', 'DEX-NP'];
 }
+
+function eTicketSeatTypes() : array
+{
+    return [
+        0 => 'DEX-P',
+        1 => 'DEX-NP'
+    ];
+}

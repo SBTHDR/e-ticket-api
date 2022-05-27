@@ -27,18 +27,6 @@ class TicketController extends Controller
             $schedule = Schedule::where('station_id', $request->to)->where('train_id', $train->id)->first();
 
             if (!empty($schedule)) {
-                $data[] = [
-                    'train_name' => $train->name,
-                    'dept_time' => date('F j, Y', strtotime($train->date)) . ' - ' . date('H:i:a', strtotime($schedule->time)),
-                    'seats_available' => '',
-                    'available' => [
-                        [
-                            'type' => '',
-                            'quantity' => '',
-                            'fare' => '',
-                        ]
-                    ]
-                ];
 
                 $available_type = [];
                 $seatsAvailable = Seat::where('train_id', $train->id)->where('status', 0)->get();
@@ -49,15 +37,34 @@ class TicketController extends Controller
 
                 $unique_available_type = array_merge($available_type);
 
+
+                $total_seats = 0;
+                $available = [];
+
                 foreach ($unique_available_type as $type) {
                     $seatsAvailable = Seat::where('train_id', $train->id)->where('status', 0)->where('type', $type)->get();
 
-                    $data['available'][] = [
-                      'type' => $type,
+                    if ($type == 0) {
+                        $fare = $schedule->ac_a_price;
+                    } else {
+                        $fare = $schedule->nac_a_price;
+                    }
+
+                    $available[] = [
+                      'type' => eTicketSeatTypes()[$type],
                       'quantity' => count($seatsAvailable),
-                      'fare' => '',
+                      'fare' => $fare,
                     ];
+
+                    $total_seats = count($seatsAvailable);
                 }
+
+                $data[] = [
+                    'train_name' => $train->name,
+                    'dept_time' => date('F j, Y', strtotime($train->date)) . ' - ' . date('H:i:a', strtotime($schedule->time)),
+                    'seats_available' => $total_seats,
+                    'available' => $available,
+                ];
 
             }
         }
