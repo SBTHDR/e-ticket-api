@@ -29,64 +29,11 @@
     <div class="px-4 text-2xl font-bold">
         Add Train
     </div>
-    <div>
-        <div id="app">
-            <add-train></add-train>
-        </div>
-        <form action="{{ route('add-train') }}" method="POST">
-            @csrf
-            <div class="flex mb-6 items-center">
 
-                <div class="flex-1 px-4">
-                    <label for="name" class="">Name</label>
-                    <input type="text" name="name" id="name" class="w-full px-4 py-2">
-
-                    @error('name')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="flex-1 px-4">
-                    <label for="date" class="">Date</label>
-                    <input type="text" name="date" id="date" class="w-full px-4 py-2">
-
-                    @error('date')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                    @enderror
-                </div>
-
-            </div>
-
-            <div class="flex mb-6">
-
-                <div class="flex-1 px-4">
-                    <label for="station_id" class="">Station ID</label>
-                    <select name="station_id" id="station_id" class="w-full px-4 py-2">
-                        <option value="">Select a station</option>
-                        @foreach($stations as $station)
-                            <option value="{{ $station->id }}">{{ $station->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('station_id')
-                        <p class="text-red-400 text-sm">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="flex-1 px-4">
-                    <label for="start_time" class="">Start Time</label>
-                    <input type="text" name="start_time" id="start_time" class="w-full px-4 py-2">
-
-                    @error('start_time')
-                    <p class="text-red-400 text-sm">{{ $message }}</p>
-                    @enderror
-                </div>
-
-            </div>
-
-            <button type="submit" class="bg-indigo-500 py-2 px-4 text-white mx-4">Save</button>
-        </form>
+    <div id="app">
+        <add-train></add-train>
     </div>
+
 </div>
 <script src="{{ asset('/js/app.js') }}"></script>
 </body>
