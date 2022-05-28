@@ -74,7 +74,7 @@
                         <div class="mb-2">Available Seats</div>
                         <ul class="flex flex-wrap">
                             @foreach ($bogi->seats as $seat)
-                                <li class="w-32 mr-3 mb-2 p-3 bg-gray-200">{{ $seat->name }}</li>
+                                <li class="w-32 mr-3 mb-2 p-3 bg-gray-200 {{ $seat->status == 1 ? 'bg-teal-400' : '' }}" >{{ $seat->name }}</li>
                             @endforeach
                         </ul>
                     </div>

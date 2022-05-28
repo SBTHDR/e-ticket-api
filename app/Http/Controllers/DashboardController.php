@@ -11,16 +11,4 @@ class DashboardController extends Controller
     {
         return view('layouts.dashboard');
     }
-
-    public function trains()
-    {
-        $trains = Train::all();
-        return view('layouts.trains', compact('trains'));
-    }
-
-    public function show($id)
-    {
-        $train = Train::findOrFail($id);
-        return view('layouts.show', compact('train'));
-    }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TrainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,11 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/trains', [DashboardController::class, 'trains'])->name('trains');
-    Route::get('/trains/show/{id}', [DashboardController::class, 'show'])->name('trains.show');
+
+    Route::get('/add-train', [TrainController::class, 'addTrain'])->name('add-train');
+    Route::post('/add-train', [TrainController::class, 'storeTrain'])->name('add-train');
+
+    Route::get('/trains', [TrainController::class, 'trains'])->name('trains');
+    Route::get('/trains/show/{id}', [TrainController::class, 'show'])->name('trains.show');
 });
 

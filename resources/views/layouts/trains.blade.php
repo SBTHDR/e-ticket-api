@@ -27,8 +27,9 @@
     </ul>
 </nav>
 <div class="container mx-auto bg-indigo-100 rounded-lg w-4/5 mt-5 p-10">
-    <div>
+    <div class="flex justify-between mb-2">
         <h2 class="text-2xl font-bold mb-2">Trains</h2>
+        <a href="{{ route('add-train') }}" class="bg-indigo-500 px-4 py-2 text-white rounded">Add Train</a>
     </div>
     <div>
         <table class="w-full table-auto">
