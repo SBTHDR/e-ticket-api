@@ -30,6 +30,9 @@
         Add Train
     </div>
     <div>
+        <div id="app">
+            <add-train></add-train>
+        </div>
         <form action="{{ route('add-train') }}" method="POST">
             @csrf
             <div class="flex mb-6 items-center">
@@ -85,5 +88,6 @@
         </form>
     </div>
 </div>
+<script src="{{ asset('/js/app.js') }}"></script>
 </body>
 </html>
