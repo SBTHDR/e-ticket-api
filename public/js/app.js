@@ -2205,6 +2205,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AddTrain",
   data: function data() {
@@ -2214,7 +2220,8 @@ __webpack_require__.r(__webpack_exports__);
       station_id: '',
       start_time: '',
       loading: true,
-      stations: []
+      stations: [],
+      error: false
     };
   },
   mounted: function mounted() {
@@ -2226,7 +2233,20 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    addTrain: function addTrain() {}
+    addTrain: function addTrain() {
+      var _this2 = this;
+
+      axios.post('/add-train', {
+        name: this.name,
+        date: this.date,
+        station_id: this.station_id,
+        start_time: this.start_time
+      }).then(function (res) {
+        console.log('success');
+      })["catch"](function (err) {
+        _this2.error = err.response.data.message;
+      });
+    }
   }
 });
 
@@ -19790,163 +19810,171 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !_vm.loading
-    ? _c(
-        "form",
-        {
-          attrs: { method: "POST" },
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.addTrain.apply(null, arguments)
+  return _c("div", [
+    _vm.error
+      ? _c("div", { staticClass: "bg-red-300 text-white p-5 mb-6" }, [
+          _vm._v("\n        " + _vm._s(_vm.error) + "\n    "),
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.loading
+      ? _c(
+          "form",
+          {
+            attrs: { method: "POST" },
+            on: {
+              submit: function ($event) {
+                $event.preventDefault()
+                return _vm.addTrain.apply(null, arguments)
+              },
             },
           },
-        },
-        [
-          _c("div", { staticClass: "flex mb-6 items-center" }, [
-            _c("div", { staticClass: "flex-1 px-4" }, [
-              _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name",
-                  },
-                ],
-                staticClass: "w-full px-4 py-2",
-                attrs: { type: "text", id: "name" },
-                domProps: { value: _vm.name },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.name = $event.target.value
-                  },
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 px-4" }, [
-              _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.date,
-                    expression: "date",
-                  },
-                ],
-                staticClass: "w-full px-4 py-2",
-                attrs: { type: "text", id: "date" },
-                domProps: { value: _vm.date },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.date = $event.target.value
-                  },
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mb-6" }, [
-            _c("div", { staticClass: "flex-1 px-4" }, [
-              _c("label", { attrs: { for: "station_id" } }, [
-                _vm._v("Station ID"),
-              ]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
+          [
+            _c("div", { staticClass: "flex mb-6 items-center" }, [
+              _c("div", { staticClass: "flex-1 px-4" }, [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.station_id,
-                      expression: "station_id",
+                      value: _vm.name,
+                      expression: "name",
                     },
                   ],
                   staticClass: "w-full px-4 py-2",
-                  attrs: { id: "station_id" },
+                  attrs: { type: "text", id: "name" },
+                  domProps: { value: _vm.name },
                   on: {
-                    change: function ($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function (o) {
-                          return o.selected
-                        })
-                        .map(function (o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.station_id = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
                     },
                   },
-                },
-                [
-                  _c("option", { attrs: { value: "" } }, [
-                    _vm._v("Select a station"),
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.stations, function (station) {
-                    return _c("option", { domProps: { value: station.id } }, [
-                      _vm._v(_vm._s(station.name)),
-                    ])
-                  }),
-                ],
-                2
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex-1 px-4" }, [
-              _c("label", { attrs: { for: "start_time" } }, [
-                _vm._v("Start Time"),
+                }),
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.start_time,
-                    expression: "start_time",
+              _c("div", { staticClass: "flex-1 px-4" }, [
+                _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date,
+                      expression: "date",
+                    },
+                  ],
+                  staticClass: "w-full px-4 py-2",
+                  attrs: { type: "text", id: "date" },
+                  domProps: { value: _vm.date },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.date = $event.target.value
+                    },
                   },
-                ],
-                staticClass: "w-full px-4 py-2",
-                attrs: { type: "text", id: "start_time" },
-                domProps: { value: _vm.start_time },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.start_time = $event.target.value
-                  },
-                },
-              }),
+                }),
+              ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "bg-indigo-500 py-2 px-4 text-white mx-4",
-              attrs: { type: "submit" },
-            },
-            [_vm._v("Save")]
-          ),
-        ]
-      )
-    : _vm._e()
+            _vm._v(" "),
+            _c("div", { staticClass: "flex mb-6" }, [
+              _c("div", { staticClass: "flex-1 px-4" }, [
+                _c("label", { attrs: { for: "station_id" } }, [
+                  _vm._v("Station ID"),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.station_id,
+                        expression: "station_id",
+                      },
+                    ],
+                    staticClass: "w-full px-4 py-2",
+                    attrs: { id: "station_id" },
+                    on: {
+                      change: function ($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function (o) {
+                            return o.selected
+                          })
+                          .map(function (o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.station_id = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Select a station"),
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.stations, function (station) {
+                      return _c("option", { domProps: { value: station.id } }, [
+                        _vm._v(_vm._s(station.name)),
+                      ])
+                    }),
+                  ],
+                  2
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex-1 px-4" }, [
+                _c("label", { attrs: { for: "start_time" } }, [
+                  _vm._v("Start Time"),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.start_time,
+                      expression: "start_time",
+                    },
+                  ],
+                  staticClass: "w-full px-4 py-2",
+                  attrs: { type: "text", id: "start_time" },
+                  domProps: { value: _vm.start_time },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.start_time = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bg-indigo-500 py-2 px-4 text-white mx-4",
+                attrs: { type: "submit" },
+              },
+              [_vm._v("Save")]
+            ),
+          ]
+        )
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
