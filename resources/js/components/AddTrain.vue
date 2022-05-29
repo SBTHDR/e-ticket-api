@@ -14,7 +14,9 @@
 
                 <div class="flex-1 px-4">
                     <label for="date" class="">Date</label>
-                    <input type="text" v-model="date" id="date" class="w-full px-4 py-2">
+                    <div>
+                        <v-date-picker v-model="date" />
+                    </div>
                 </div>
 
             </div>
