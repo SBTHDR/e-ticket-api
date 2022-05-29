@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,8 @@ use App\Http\Controllers\StationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//
-//Route::view('/home', 'layouts.home')->middleware('auth');
+Route::get('/', [HomeController::class, 'index']);
+Route::post('/search_ticket', [HomeController::class, 'searchTicket']);
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

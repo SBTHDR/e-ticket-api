@@ -9,6 +9,7 @@ require('./bootstrap');
 
 
 Vue.component('add-train', require('./components/AddTrain').default);
+Vue.component('home', require('./components/Home').default);
 Vue.component('v-date-picker', DatePicker);
 Vue.component('v-select', vSelect);
 

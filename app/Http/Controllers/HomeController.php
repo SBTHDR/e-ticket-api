@@ -1,16 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Schedule;
 use App\Models\Seat;
 use App\Models\Train;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class TicketController extends Controller
+class HomeController extends Controller
 {
+    public function index()
+    {
+        return view('welcome');
+    }
+
     public function searchTicket(Request $request)
     {
         $request->validate([
@@ -26,7 +30,7 @@ class TicketController extends Controller
         foreach ($trains as $train) {
             $schedule = Schedule::where('station_id', $request->to)->where('train_id', $train->id)->first();
 
-            if (!empty($schedule)) {
+            if(!empty($schedule)) {
 
                 $available_type = [];
                 $seatsAvailable = Seat::where('train_id', $train->id)->where('status', 0)->get();
@@ -51,9 +55,9 @@ class TicketController extends Controller
                     }
 
                     $available[] = [
-                      'type' => eTicketSeatTypes()[$type],
-                      'quantity' => count($seatsAvailable),
-                      'fare' => $fare,
+                        'type' => eTicketSeatTypes()[$type],
+                        'quantity' => count($seatsAvailable),
+                        'fare' => $fare,
                     ];
 
                     $total_seats = count($seatsAvailable);
@@ -65,7 +69,6 @@ class TicketController extends Controller
                     'seats_available' => $total_seats,
                     'available' => $available,
                 ];
-
             }
         }
 

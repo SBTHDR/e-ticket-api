@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +13,6 @@ use App\Http\Controllers\Api\TicketController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::post('/search_ticket', [TicketController::class, 'searchTicket']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
