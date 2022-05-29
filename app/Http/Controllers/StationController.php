@@ -10,6 +10,15 @@ class StationController extends Controller
 {
     public function stations()
     {
-        return response()->json(Station::all(), Response::HTTP_OK);
+        $stations = Station::all();
+        $data = [];
+
+        foreach ($stations as $station) {
+            $data[] = [
+              'label' => $station->name,
+              'code' => $station->id,
+            ];
+        }
+        return response()->json($data, Response::HTTP_OK);
     }
 }

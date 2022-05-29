@@ -24,11 +24,8 @@
             <div class="flex mb-6">
 
                 <div class="flex-1 px-4">
-                    <label for="station_id" class="">Station ID</label>
-                    <select v-model="station_id" id="station_id" class="w-full px-4 py-2">
-                        <option value="">Select a station</option>
-                        <option v-for="station in stations" :value="station.id">{{ station.name }}</option>
-                    </select>
+                    <label for="station_id" class="">Station</label>
+                    <v-select :options="stations"/>
                 </div>
 
                 <div class="flex-1 px-4">
