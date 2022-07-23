@@ -15,7 +15,6 @@ with full role and permission based authentication and authorization.
 - User Role and permission Management
 - Role and permission based Authentication
 - Role and permission based Authorization
-- Email activation and notifications
 
 ## Installation
 
